@@ -1,0 +1,26 @@
+﻿@page
+@model PM.Web.Pages.User.DashboardPageModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h3>Dashboard</h3>
+
+<div class="row">
+    <div class="col-3 mb-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Profile types</h5>
+                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <p class="card-text">
+                    Profile types admin
+                </p>
+                <a asp-page="/Types/Index"
+                   class="card-link">
+                    Go <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

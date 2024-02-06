@@ -1,0 +1,11 @@
+﻿@page
+@model PM.Web.Pages.User.LogoutPageModel
+
+@{
+    var name = User.Identity?.Name;
+    ViewData["Title"] = $"Logout {name}";
+}
+
+<h3>@name, do you want to logout?</h3>
+<p class="text-black mb-4">If the answer is YES, click below button or navigate to some other page.</p>
+<a class="btn btn-danger" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">I am sure and I want to logout!</a>
