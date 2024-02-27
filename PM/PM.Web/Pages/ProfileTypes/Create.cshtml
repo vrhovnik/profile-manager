@@ -1,0 +1,53 @@
+@page
+@model CreatePageModel
+
+@{
+    ViewData["Title"] = "Add category";
+}
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-page="/User/Dashboard">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-page="/ProfileTypes/Index">Profile types</a>
+        </li>
+        <li aria-current="page"
+            class="breadcrumb-item active">
+            Add new profile type
+        </li>
+    </ol>
+}
+
+<h2 class="text-muted">
+    Add profile type
+</h2>
+
+<form enctype="multipart/form-data"
+      method="post">
+    <div class="mb-3">
+        <label asp-for="ProfileType.Name" class="form-label">Enter name</label>
+        <input asp-for="ProfileType.Name"
+               class="form-control"
+               required="required"
+               type="text">
+        <span asp-validation-for="ProfileType.Name"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ProfileType.Description" class="form-label">Enter description</label>
+        <input asp-for="ProfileType.Description"
+               class="form-control"
+               required="required"
+               type="text">
+        <span asp-validation-for="ProfileType.Description"></span>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary mr-3 mt-2 "
+                type="submit">
+            Save <i class="fas fa-save"></i>
+        </button>
+        <a asp-page="/ProfileTypes/Index">Go to profile types list</a>
+    </div>
+</form>

@@ -1,51 +1,46 @@
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
-using PM.Web.Options;
+using PM.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOptions<AzureAdOptions>()
-    .Bind(builder.Configuration.GetSection(BaseOptions.AzureAdSectionName))
-    .ValidateDataAnnotations();
-builder.Services.AddOptions<AppOptions>()
-    .Bind(builder.Configuration.GetSection(BaseOptions.AppSectionName))
-    .ValidateDataAnnotations();
 builder.Services.AddOptions<DataOptions>()
-    .Bind(builder.Configuration.GetSection(BaseOptions.DataSectionName))
-    .ValidateDataAnnotations();
+    .Bind(builder.Configuration.GetSection(OptionNames.DataOptionsName))
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+
+builder.Services.AddOptions<AzureAdOptions>()
+    .Bind(builder.Configuration.GetSection(OptionNames.AzureAdOptionsName))
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
 
 builder.Services.AddHealthChecks();
-builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection(BaseOptions.AzureAdSectionName));
-
-builder.Services.AddControllers();
-builder.Services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
-builder.Services.AddHttpContextAccessor();
 builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
-        options.Conventions.AddPageRoute("/Info/Index", ""))
-    .AddMvcOptions(options =>
-    {
-        var policy = new AuthorizationPolicyBuilder()
-            .RequireAuthenticatedUser()
-            .Build();
-        options.Filters.Add(new AuthorizeFilter(policy));
-    }).AddMicrosoftIdentityUI();
+    options.Conventions.AddPageRoute("/Info/Index", ""));
+
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
+
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = options.DefaultPolicy;
+});
+builder.Services.AddRazorPages()
+    .AddMicrosoftIdentityUI();
+
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment()) app.UseExceptionHandler("/Error");
+if (!app.Environment.IsDevelopment()) app.UseExceptionHandler("/Info/Error");
 
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapHealthChecks("/health", new HealthCheckOptions
+    endpoints.MapHealthChecks("/" + RouteHelper.HealthRoute, new HealthCheckOptions
     {
         Predicate = _ => true,
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
@@ -53,4 +48,5 @@ app.UseEndpoints(endpoints =>
     endpoints.MapRazorPages();
     endpoints.MapControllers();
 });
+
 app.Run();

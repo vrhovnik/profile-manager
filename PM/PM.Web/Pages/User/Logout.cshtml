@@ -1,11 +1,16 @@
 ﻿@page
-@model PM.Web.Pages.User.LogoutPageModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model LogoutPageModel
 
 @{
-    var name = User.Identity?.Name;
-    ViewData["Title"] = $"Logout {name}";
+    ViewData["Title"] = "Logout";
 }
 
-<h3>@name, do you want to logout?</h3>
-<p class="text-black mb-4">If the answer is YES, click below button or navigate to some other page.</p>
-<a class="btn btn-danger" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">I am sure and I want to logout!</a>
+<h1>Do you want to log out?</h1>
+
+<p>You won't be able to access search over your data, administration and configuration of your profiles.</p>
+
+<form method="post">
+    <button type="submit" class="btn btn-lg btn-danger">I understand, log me out!</button>
+</form>
+

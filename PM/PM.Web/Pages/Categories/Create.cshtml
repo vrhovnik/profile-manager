@@ -1,0 +1,53 @@
+@page
+@model CreatePageModel
+
+@{
+    ViewData["Title"] = "Add category";
+}
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-page="/User/Dashboard">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-page="/Categories/Index">Categories</a>
+        </li>
+        <li aria-current="page"
+            class="breadcrumb-item active">
+            Add new category
+        </li>
+    </ol>
+}
+
+<h2 class="text-muted">
+    Add category
+</h2>
+
+<form enctype="multipart/form-data"
+      method="post">
+    <div class="mb-3">
+        <label asp-for="CurrentCategory.Name" class="form-label">Enter name</label>
+        <input asp-for="CurrentCategory.Name"
+               class="form-control"
+               required="required"
+               type="text">
+        <span asp-validation-for="CurrentCategory.Name"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CurrentCategory.Description" class="form-label">Enter description</label>
+        <input asp-for="CurrentCategory.Description"
+               class="form-control"
+               required="required"
+               type="text">
+        <span asp-validation-for="CurrentCategory.Description"></span>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary mr-3 mt-2 "
+                type="submit">
+            Save category <i class="fas fa-save"></i>
+        </button>
+        <a asp-page="/Categories/Index">Go to categories list</a>
+    </div>
+</form>

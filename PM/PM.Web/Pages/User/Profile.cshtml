@@ -1,9 +1,0 @@
-﻿@page
-@model PM.Web.Pages.User.ProfilePageModel
-
-@{
-    var name = User.Identity?.Name;
-    ViewData["Title"] = $"Profile {name}";
-}
-
-<h3>Settings for @name</h3>

@@ -1,0 +1,41 @@
+@page "{id}"
+@model DeletePageModel
+
+@{
+    var name = Model.CurrentCategory.Name;
+    ViewData["Title"] = $"Deleting category {name}";
+}
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-page="/User/Dashboard">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-page="/Categories/Index">Categories</a>
+        </li>
+        <li aria-current="page"
+            class="breadcrumb-item active">
+            Delete category @name
+        </li>
+    </ol>
+}
+
+<h2 class="text-muted">
+    Delete category @name 
+</h2>
+
+
+<p class="text-info">
+    Delete @name with description @Model.CurrentCategory.Description. Želiš nadaljevati?
+</p>
+
+<form method="post">
+    <input type="hidden" asp-for="CurrentCategory.CategoryId"/>
+    <button class="btn btn-primary mr-2 mt-2"
+            type="submit">
+        I understand I will delete @name and every data associated with that category
+    </button>
+    <a asp-page="/Categories/Index">Cancel and go back to the list</a>
+</form>

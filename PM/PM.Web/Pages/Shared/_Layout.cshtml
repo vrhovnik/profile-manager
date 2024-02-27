@@ -14,7 +14,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">Profile Manager</a>
+            <a class="navbar-brand" asp-area="" asp-page="/Info/Index">Profile Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,11 +22,14 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Info/Index">Information</a>
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Info/Index">Last added</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Search/Index">Search</a>
-                    </li>
+                    @if (User.Identity is { IsAuthenticated: true })
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Profiles/Index">Profiles</a>
+                        </li>
+                    }
                 </ul>
                 <div class="align-content-end me-2">
                     <ul class="navbar-nav">
@@ -42,7 +45,7 @@
                                         <a class="dropdown-item" asp-page="/User/Dashboard">Dashboard</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-page="/User/Profile">Profile</a>
+                                        <a class="dropdown-item" asp-page="/User/Settings">Settings</a>
                                     </li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -58,7 +61,8 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Login <i class="fa-solid fa-user"></i></a>
+                                <a class="nav-link text-dark" asp-action="SignIn" asp-controller="Account" 
+                                   asp-area="MicrosoftIdentity"><i class="fa-solid fa-user"></i> Login</a>
                             </li>
                         }
                     </ul>
@@ -70,13 +74,11 @@
 <div class="container">
     @if (IsSectionDefined("breadcrumb"))
     {
-        <div class="row">
-            <nav aria-label="breadcrumb" class="float-end mb-2">
-                <ol class="breadcrumb">
-                    @await RenderSectionAsync("breadcrumb")
-                </ol>
-            </nav>
-        </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                @await RenderSectionAsync("breadcrumb")
+            </ol>
+        </nav>
     }
     <main role="main" class="pb-3">
         @RenderBody()
@@ -85,7 +87,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; @DateTime.Now.Year - PM - <a asp-area="" asp-page="/Info/Privacy">Privacy</a>
+        Created in &copy; 2024 - Profile Manager - <a asp-area="" asp-page="/Info/Privacy">Privacy</a>
     </div>
 </footer>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

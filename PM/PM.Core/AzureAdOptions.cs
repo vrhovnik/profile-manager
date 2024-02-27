@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PM.Web.Options;
+namespace PM.Core;
 
 public class AzureAdOptions
 {
@@ -18,6 +18,4 @@ public class AzureAdOptions
     public string Secret { get; set; }
     [Required(ErrorMessage = "Azure SubscriptionId is required")]
     public string SubscriptionId { get; set; }
-    [Required(ErrorMessage = "URL to SharePoint is required")]
-    public string ApplicationIdUri { get; set; }
 }
