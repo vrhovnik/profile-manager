@@ -4,11 +4,18 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using PM.Core;
+using PM.Interfaces;
+using PM.Storage.Azure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOptions<DataOptions>()
     .Bind(builder.Configuration.GetSection(OptionNames.DataOptionsName))
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+
+builder.Services.AddOptions<StorageOptions>()
+    .Bind(builder.Configuration.GetSection(OptionNames.StorageOptionsName))
     .ValidateDataAnnotations()
     .ValidateOnStart();
 
@@ -24,12 +31,12 @@ builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
 
-builder.Services.AddAuthorization(options =>
-{
-    options.FallbackPolicy = options.DefaultPolicy;
-});
-builder.Services.AddRazorPages()
-    .AddMicrosoftIdentityUI();
+builder.Services.AddAuthorization(options => { options.FallbackPolicy = options.DefaultPolicy; });
+builder.Services.AddRazorPages().AddMicrosoftIdentityUI();
+
+var storageOptions = builder.Configuration.GetSection(OptionNames.StorageOptionsName).Get<StorageOptions>();
+builder.Services.AddScoped<ISettingsService, StorageSettingsService>(_ =>
+    new StorageSettingsService(storageOptions.SettingsContainer, storageOptions.ConnectionString));
 
 var app = builder.Build();
 

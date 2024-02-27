@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace PM.Web.Pages.User;
 
+[Authorize]
 public class LogoutPageModel(ILogger<LogoutPageModel> logger) : PageModel
 {
     public void OnGet() => logger.LogInformation("Loading logout page at {DateLoaded}", DateTime.Now);

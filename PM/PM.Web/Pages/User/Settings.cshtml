@@ -1,0 +1,42 @@
+﻿@page
+@model PM.Web.Pages.User.SettingsPageModel
+
+@{
+    ViewData["Title"]="Settings";
+}
+
+<div class="row">
+    <div class="col">
+        <form enctype="multipart/form-data" method="post">
+            <div class="mb-3">
+                <label asp-for="UserSettings.SettingsId" class="form-label">Enter</label>
+                <input asp-for="UserSettings.SettingsId"
+                       class="form-control"
+                       type="text">
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary mr-3 mt-2 "
+                        type="submit">
+                    Save changes <i class="fas fa-save"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-3">
+        <div class="card text-bg-light mb-3">
+            <div class="card-header">Check additional data</div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="card-link"
+                           asp-page="/User/Dashboard"
+                           target="_blank">
+                            Dashboard
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
