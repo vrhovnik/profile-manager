@@ -6,7 +6,6 @@ public class DataOptions
 {
     [Required(ErrorMessage = "Connection string to database is required settings")]
     public string ConnectionString { get; set; }
-    [Required(ErrorMessage = "Database name is required settings")]
     public string DatabaseName { get; set; }
     public int PagingSize { get; set; } = 15;
 }

@@ -49,7 +49,7 @@ public class ProfileTypesRepository(string connectionString)
             "LEFT JOIN Profiles P ON U.ProfileTypeId = P.ProfileTypeId ";
 
         if (!string.IsNullOrEmpty(query))
-            sql += "WHERE C.Name LIKE '%' + @query + '%' ";
+            sql += "WHERE U.Name LIKE '%' + @query + '%' ";
 
         sql += "GROUP BY U.ProfileTypeId, U.Name, U.Description ORDER BY U.Name";
         var result = await connection.QueryAsync<ProfileType>(sql, new { query });
@@ -61,7 +61,7 @@ public class ProfileTypesRepository(string connectionString)
         using var connection = await GetConnection();
         var item = await connection.ExecuteScalarAsync<int>(
             "INSERT INTO dbo.ProfileTypes(Name, Description)VALUES(@name,@desc);SELECT CAST(SCOPE_IDENTITY() as bigint)",
-            new { name = entity.Name, decs = entity.Description });
+            new { name = entity.Name, desc = entity.Description });
         entity.ProfileTypeId = item;
         return entity;
     }

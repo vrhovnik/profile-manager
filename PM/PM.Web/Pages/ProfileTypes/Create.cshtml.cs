@@ -27,7 +27,7 @@ public class CreatePageModel(ILogger<CreatePageModel> logger, IProfileTypeReposi
             return Page();
         }
 
-        return RedirectToPage("/Categories/Index");
+        return RedirectToPage("/ProfileTypes/Index");
     }
 
     [BindProperty] public ProfileType ProfileType { get; set; }

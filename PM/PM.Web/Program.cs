@@ -42,6 +42,8 @@ builder.Services.AddScoped<ISettingsService, StorageSettingsService>(_ =>
 var dataOptions = builder.Configuration.GetSection(OptionNames.DataOptionsName).Get<DataOptions>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>(_ =>
     new CategoryRepository(dataOptions.ConnectionString));
+builder.Services.AddScoped<IProfileTypeRepository, ProfileTypesRepository>(_ =>
+    new ProfileTypesRepository(dataOptions.ConnectionString));
 
 var app = builder.Build();
 
