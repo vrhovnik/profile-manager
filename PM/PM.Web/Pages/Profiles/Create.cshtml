@@ -1,0 +1,26 @@
+﻿@page
+@model PM.Web.Pages.Profiles.CreatePageModel
+
+@{
+    ViewData["Title"] = "Create new profile";
+}
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-page="/User/Dashboard">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-page="/Categories/Index">Profiles</a>
+        </li>
+        <li aria-current="page"
+            class="breadcrumb-item active">
+            Create new profile
+        </li>
+    </ol>
+}
+
+<h2 class="text-muted">
+    Add new profile
+</h2>

@@ -1,0 +1,82 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=0A438713A013D04EB45E7E152CABF417/Position/@EntryValue">11</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=13941D0239FA44408839839201D48B75/Position/@EntryValue">9</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=351BA6153E92284286130D81387D6C78/Position/@EntryValue">8</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=6C7E59EBC599B446ADC9EEF651393098/Position/@EntryValue">6</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=7EB672CFB69F3E4EB59D3C16934C2A32/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=7EB672CFB69F3E4EB59D3C16934C2A32/EntryName/@EntryValue">Controller</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=7EB672CFB69F3E4EB59D3C16934C2A32/Position/@EntryValue">12</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=8D47A3AE0A67E346A5AF06E4C62D9FDF/Position/@EntryValue">10</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=A53B089D0C73F84D86B0861923F5B1AC/Position/@EntryValue">7</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/QuickList/=D7EC079A413E934BB1D3FC50986A8B50/Entry/=B79E002F8A764400A95062D202834A17/Position/@EntryValue">5</s:Int64>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=000F9328D163EF499108D49218DF0568/CustomProperties/=FileName/@EntryIndexedValue">Index</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2CAB0A567F30704CA99AA3EC249E3153/Text/@EntryValue">$HEADER$namespace $NAMESPACE$;
+
+public class $CLASS$ {$END$}
+</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=37AB964D6E4D424BBE2530F92DA37EEB/Text/@EntryValue">$HEADER$namespace $NAMESPACE$;
+
+public record $RECORD$($END$);
+</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6FAA6736247D464489DF536819A6D103/Text/@EntryValue">$HEADER$namespace $NAMESPACE$;
+
+public interface $INTERFACE$ {$END$}
+</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=79EC7A10F8C5424AB1F620BFF9D9A55F/Text/@EntryValue">public class $name$
+  {
+    $END$
+  }</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Applicability/=File/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/CustomProperties/=Extension/@EntryIndexedValue">cs</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/CustomProperties/=FileName/@EntryIndexedValue">ApiController</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/CustomProperties/=ValidateFileName/@EntryIndexedValue">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Description/@EntryValue">ApiController</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Field/=CLASS/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Field/=CLASS/Order/@EntryValue">2</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Field/=HEADER/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Field/=HEADER/Expression/@EntryValue">fileheader()</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Field/=HEADER/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Field/=NAMESPACE/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Field/=NAMESPACE/Expression/@EntryValue">fileDefaultNamespace()</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Field/=NAMESPACE/InitialRange/@EntryValue">-1</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Field/=NAMESPACE/Order/@EntryValue">1</s:Int64>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Image/@EntryValue">Razor</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Scope/=668B196F409F864B93018814E460F729/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Scope/=668B196F409F864B93018814E460F729/Type/@EntryValue">InRazorCSharpFWProject</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=7EB672CFB69F3E4EB59D3C16934C2A32/Text/@EntryValue">$HEADER$
+namespace $NAMESPACE$;
+
+[AllowAnonymous, ApiController, Route("$END$"),
+ Produces(MediaTypeNames.Application.Json)]
+public class $CLASS$Controller(ILogger&lt;$CLASS$Controller&gt; logger) : Controller
+{
+    [HttpGet]
+    [Route(RouteHelper.HealthRoute)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult IsAlive()
+    {
+        logger.LogInformation("Called alive endpoint for categories API at {DateCalled}", DateTime.UtcNow);
+        return new ContentResult { StatusCode = 200, Content = $"I am alive at {DateTime.Now}" };
+    }  
+}</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BF56153668D6434BAEBFC640173EDE9C/Text/@EntryValue">@page
+@model $NAMESPACE$.$CLASS$$END$
+
+@{
+  ViewBag.Title = "$title$";  
+}
+
+&lt;h2&gt;$title$&lt;/h2&gt;
+
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BF56153668D6434BAEBFC640173EDE9C/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BF56153668D6434BAEBFC640173EDE9C/Field/=title/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=BF56153668D6434BAEBFC640173EDE9C/Field/=title/Order/@EntryValue">3</s:Int64>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=F911B959B4259749AC984F9935FCD690/Text/@EntryValue">public interface I$name$
+{
+  $END$
+}</s:String></wpf:ResourceDictionary>

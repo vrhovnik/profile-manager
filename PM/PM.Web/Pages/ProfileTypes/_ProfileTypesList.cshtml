@@ -23,30 +23,30 @@
                 <th class="text-center">
                     Profile type description
                 </th>
-                <th>Profile categorized</th>
+                <th class="text-center">Profile categorized</th>
                 <th>...</th>
             </tr>
             </thead>
-            @foreach (var category in Model)
+            @foreach (var profileType in Model)
             {
                 <tr>
                     <td>
-                        @category.Name
+                        @profileType.Name
                     </td>
                     <td class="text-center">
-                        @category.Description
+                        @profileType.Description
                     </td>
                     <td class="text-center">
-                        @category.Count
+                        @profileType.Count
                     </td>
                     <td>
                         <a asp-page="/ProfileTypes/Edit"
-                           asp-route-id="@category.ProfileTypeId">
+                           asp-route-id="@profileType.ProfileTypeId">
                             <i class="fas fa-edit"></i>
                         </a>
                         &nbsp;&nbsp;
                         <a asp-page="/ProfileTypes/Delete"
-                           asp-route-id="@category.ProfileTypeId">
+                           asp-route-id="@profileType.ProfileTypeId">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>
