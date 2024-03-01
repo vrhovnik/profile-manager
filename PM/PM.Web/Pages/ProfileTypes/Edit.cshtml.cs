@@ -37,6 +37,6 @@ public class EditPageModel(
         return RedirectToPage("/ProfileTypes/Index");
     }
 
-    [BindProperty(SupportsGet = true)] public string Id { get; set; }
+    [BindProperty(SupportsGet = true)] public int Id { get; set; }
     [BindProperty] public ProfileType CurrentProfileType { get; set; }
 }

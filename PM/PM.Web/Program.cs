@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using PM.Core;
+using PM.Data.SQL;
 using PM.Interfaces;
 using PM.Storage.Azure;
 
@@ -37,6 +38,10 @@ builder.Services.AddRazorPages().AddMicrosoftIdentityUI();
 var storageOptions = builder.Configuration.GetSection(OptionNames.StorageOptionsName).Get<StorageOptions>();
 builder.Services.AddScoped<ISettingsService, StorageSettingsService>(_ =>
     new StorageSettingsService(storageOptions.SettingsContainer, storageOptions.ConnectionString));
+
+var dataOptions = builder.Configuration.GetSection(OptionNames.DataOptionsName).Get<DataOptions>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>(_ =>
+    new CategoryRepository(dataOptions.ConnectionString));
 
 var app = builder.Build();
 

@@ -22,6 +22,7 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\PM.Core\PM.Core.csproj" />
+      <ProjectReference Include="..\PM.Data.SQL\PM.Data.SQL.csproj" />
       <ProjectReference Include="..\PM.Interfaces\PM.Interfaces.csproj" />
       <ProjectReference Include="..\PM.Storage.Azure\PM.Storage.Azure.csproj" />
     </ItemGroup>
@@ -30,6 +31,5 @@
       <AdditionalFiles Include="Pages\ProfileTypes\Delete.cshtml" />
       <AdditionalFiles Include="Pages\ProfileTypes\Edit.cshtml" />
       <AdditionalFiles Include="Pages\ProfileTypes\Index.cshtml" />
-      <AdditionalFiles Include="Pages\ProfileTypes\_CategoriesList.cshtml" />
     </ItemGroup>
 </Project>

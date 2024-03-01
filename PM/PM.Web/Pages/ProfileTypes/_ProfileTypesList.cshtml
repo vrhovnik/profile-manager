@@ -8,11 +8,11 @@
             <caption>
                 @if (string.IsNullOrEmpty(Model.Query))
                 {
-                    @:Profile types list
+                    @:Profile type list
                 }
                 else
                 {
-                    @:Profile types list with query <b>@Model.Query</b>
+                    @:Profile type list with query <b>@Model.Query</b>
                 }
             </caption>
             <thead class="table-dark">
@@ -23,26 +23,30 @@
                 <th class="text-center">
                     Profile type description
                 </th>
+                <th>Profile categorized</th>
                 <th>...</th>
             </tr>
             </thead>
-            @foreach (var profileType in Model)
+            @foreach (var category in Model)
             {
                 <tr>
                     <td>
-                        @profileType.Name
+                        @category.Name
                     </td>
                     <td class="text-center">
-                        @profileType.Description
+                        @category.Description
+                    </td>
+                    <td class="text-center">
+                        @category.Count
                     </td>
                     <td>
                         <a asp-page="/ProfileTypes/Edit"
-                           asp-route-id="@profileType.ProfileTypeId">
+                           asp-route-id="@category.ProfileTypeId">
                             <i class="fas fa-edit"></i>
                         </a>
                         &nbsp;&nbsp;
                         <a asp-page="/ProfileTypes/Delete"
-                           asp-route-id="@profileType.ProfileTypeId">
+                           asp-route-id="@category.ProfileTypeId">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>

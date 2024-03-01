@@ -35,6 +35,6 @@ public class DeletePageModel(
         return RedirectToPage("/Categories/Index");
     }
 
-    [BindProperty(SupportsGet = true)] public string Id { get; set; }
+    [BindProperty(SupportsGet = true)] public int Id { get; set; }
     [BindProperty] public Models.Category CurrentCategory { get; set; }
 }
