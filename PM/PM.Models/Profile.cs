@@ -6,4 +6,5 @@ public class Profile
     public string Name { get; set; }
     public string Description { get; set; }
     public ProfileType Type { get; set; }
+    public List<ProfileItem> Items { get; set; } = new();
 }

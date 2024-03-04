@@ -2,8 +2,8 @@
 @model EditPageModel
 
 @{
-    var name = Model.CurrentProfileType.Name;
-    ViewData["Title"] = $"Edit profile type {name}";
+    var name = Model.CurrentProfileItemType.Name;
+    ViewData["Title"] = $"Edit profile item type {name}";
 }
 
 @section breadcrumb
@@ -13,11 +13,11 @@
             <a asp-page="/User/AdminDashboard">Dashboard</a>
         </li>
         <li class="breadcrumb-item">
-            <a asp-page="/ProfileTypes/Index">Profile types</a>
+            <a asp-page="/ProfileItemTypes/Index">Profile item types</a>
         </li>
         <li aria-current="page"
             class="breadcrumb-item active">
-            Profile type @Model.CurrentProfileType.Name
+            Profile item type @Model.CurrentProfileItemType.Name
         </li>
     </ol>
 }
@@ -25,27 +25,27 @@
 <form enctype="multipart/form-data"
       method="post">
     <div class="mb-3">
-        <label asp-for="CurrentProfileType.Name" class="form-label">Profile type name</label>
-        <input asp-for="CurrentProfileType.Name"
+        <label asp-for="CurrentProfileItemType.Name" class="form-label">Name</label>
+        <input asp-for="CurrentProfileItemType.Name"
                class="form-control"
                required="required"
                type="text">
-        <span asp-validation-for="CurrentProfileType.Name"></span>
+        <span asp-validation-for="CurrentProfileItemType.Name"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="CurrentProfileType.Description" class="form-label">Profile type description</label>
-        <input asp-for="CurrentProfileType.Description"
+        <label asp-for="CurrentProfileItemType.Description" class="form-label">Description</label>
+        <input asp-for="CurrentProfileItemType.Description"
                class="form-control"
                required="required"
                type="text">
-        <span asp-validation-for="CurrentProfileType.Description"></span>
+        <span asp-validation-for="CurrentProfileItemType.Description"></span>
     </div>
     <div class="mb-3">
         <button class="btn btn-primary mr-3 mt-2 "
                 type="submit">
             Save <i class="fas fa-save"></i>
         </button>
-        <a asp-page="/Categories/Index">Cancel and go back to categories list</a>
+        <a asp-page="/ProfileItemTypes/Index">Cancel and go back to profile item types list</a>
     </div>
 </form>
 

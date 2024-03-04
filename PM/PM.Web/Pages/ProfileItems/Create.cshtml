@@ -2,7 +2,7 @@
 @model CreatePageModel
 
 @{
-    ViewData["Title"] = "Add profile type";
+    ViewData["Title"] = "Add profile item";
 }
 
 @section breadcrumb
@@ -12,42 +12,42 @@
             <a asp-page="/User/Dashboard">Dashboard</a>
         </li>
         <li class="breadcrumb-item">
-            <a asp-page="/ProfileTypes/Index">Profile types</a>
+            <a asp-page="/ProfileItems/Index">Profile item</a>
         </li>
         <li aria-current="page"
             class="breadcrumb-item active">
-            Add new profile type
+            Add new profile item
         </li>
     </ol>
 }
 
 <h2 class="text-muted">
-    Add profile type
+    Add profile item
 </h2>
 
 <form enctype="multipart/form-data"
       method="post">
     <div class="mb-3">
-        <label asp-for="ProfileType.Name" class="form-label">Enter name</label>
-        <input asp-for="ProfileType.Name"
+        <label asp-for="ProfileItem.Name" class="form-label">Enter name</label>
+        <input asp-for="ProfileItem.Name"
                class="form-control"
                required="required"
                type="text">
-        <span asp-validation-for="ProfileType.Name"></span>
+        <span asp-validation-for="ProfileItem.Name"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="ProfileType.Description" class="form-label">Enter description</label>
-        <input asp-for="ProfileType.Description"
+        <label asp-for="ProfileItem.Description" class="form-label">Enter description</label>
+        <input asp-for="ProfileItem.Description"
                class="form-control"
                required="required"
                type="text">
-        <span asp-validation-for="ProfileType.Description"></span>
+        <span asp-validation-for="ProfileItem.Description"></span>
     </div>
     <div class="mb-3">
         <button class="btn btn-primary mr-3 mt-2 "
                 type="submit">
             Save <i class="fas fa-save"></i>
         </button>
-        <a asp-page="/ProfileTypes/Index">Go to profile types list</a>
+        <a asp-page="/ProfileItems/Index">Go to profile items list</a>
     </div>
 </form>

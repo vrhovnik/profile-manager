@@ -26,6 +26,7 @@
       <ProjectReference Include="..\PM.Storage.Azure\PM.Storage.Azure.csproj" />
     </ItemGroup>
     <ItemGroup>
+      <AdditionalFiles Include="Pages\ProfileItemTypes\_ProfileTypesList.cshtml" />
       <AdditionalFiles Include="Pages\ProfileTypes\Create.cshtml" />
       <AdditionalFiles Include="Pages\ProfileTypes\Delete.cshtml" />
       <AdditionalFiles Include="Pages\ProfileTypes\Edit.cshtml" />

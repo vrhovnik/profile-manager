@@ -22,7 +22,6 @@ public class CategoryRepository(string connectionString)
     public override async Task<bool> DeleteAsync(int entityId)
     {
         using var connection = await GetConnection();
-        //delete from the join table first
         await connection.ExecuteAsync("DELETE FROM dbo.Profile2Categories WHERE CategoryId=@catId",
             new { catId = entityId });
         var result = await connection.ExecuteAsync("DELETE FROM dbo.Categories C WHERE C.CategoryId=@catId",
@@ -54,6 +53,15 @@ public class CategoryRepository(string connectionString)
         sql += "GROUP BY U.CategoryId, U.Name, U.Description ORDER BY U.Name";
         var result = await connection.QueryAsync<Category>(sql, new { query });
         return PaginatedList<Category>.Create(result.ToList(), page, pageSize, query);
+    }
+
+    public override async Task<bool> UpdateAsync(Category entity)
+    {
+        using var connection = await GetConnection();
+        var result = await connection.ExecuteAsync(
+            "UPDATE dbo.Categories SET Name=@name, Description=@desc WHERE CategoryId=@catId",
+            new { name = entity.Name, desc = entity.Description, catId = entity.CategoryId });
+        return result > 0;
     }
 
     public override async Task<Category> InsertAsync(Category entity)

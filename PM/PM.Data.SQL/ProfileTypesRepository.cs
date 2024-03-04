@@ -56,6 +56,15 @@ public class ProfileTypesRepository(string connectionString)
         return PaginatedList<ProfileType>.Create(result.ToList(), page, pageSize, query);
     }
 
+    public override async Task<bool> UpdateAsync(ProfileType entity)
+    {
+        using var connection = await GetConnection();
+        var result = await connection.ExecuteAsync(
+            "UPDATE dbo.ProfileTypes SET Name=@name, Description=@desc WHERE ProfileTypeId=@id",
+            new { name = entity.Name, desc = entity.Description, id = entity.ProfileTypeId });
+        return result > 0;
+    }
+
     public override async Task<ProfileType> InsertAsync(ProfileType entity)
     {
         using var connection = await GetConnection();

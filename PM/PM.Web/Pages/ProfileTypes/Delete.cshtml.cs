@@ -13,7 +13,7 @@ public class DeletePageModel(
 {
     public async Task OnGetAsync()
     {
-        logger.LogInformation("Loading profile type  with {CityId}", Id);
+        logger.LogInformation("Loading profile type  with {ProfileTypeId}", Id);
         CurrentProfileType = await profileTypeRepository.DetailsAsync(Id);
         logger.LogInformation("Loaded profile type {Name}", CurrentProfileType.Name);
     }
