@@ -37,11 +37,27 @@
     </div>
     <div class="mb-3">
         <label asp-for="ProfileItem.Description" class="form-label">Enter description</label>
-        <input asp-for="ProfileItem.Description"
+        <textarea class="form-control" asp-for="ProfileItem.Description" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ProfileItem.ItemType" class="form-label">Choose item type</label>
+        <select class="form-select" aria-label="Item type select" name="ddlItemTypes">
+            @foreach (var profileItemType in Model.ItemTypes)
+            {
+                <option value="@profileItemType.ProfileItemTypeId">@profileItemType.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ProfileItem.Line" class="form-label">Line to be entered in the script</label>
+        <input asp-for="ProfileItem.Line"
                class="form-control"
                required="required"
                type="text">
-        <span asp-validation-for="ProfileItem.Description"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ProfileItem.LineContent" class="form-label">Line to be entered in the script</label>
+        <textarea class="form-control" asp-for="ProfileItem.LineContent" rows="6"></textarea>
     </div>
     <div class="mb-3">
         <button class="btn btn-primary mr-3 mt-2 "

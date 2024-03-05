@@ -24,6 +24,7 @@
 
 <form enctype="multipart/form-data"
       method="post">
+    <input type="hidden" asp-for="CurrentCategory.CategoryId"/>
     <div class="mb-3">
         <label asp-for="CurrentCategory.Name" class="form-label">Category name</label>
         <input asp-for="CurrentCategory.Name"

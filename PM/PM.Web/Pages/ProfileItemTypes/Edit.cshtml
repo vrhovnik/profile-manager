@@ -24,6 +24,7 @@
 
 <form enctype="multipart/form-data"
       method="post">
+    <input type="hidden" asp-for="CurrentProfileItemType.ProfileItemTypeId"/>
     <div class="mb-3">
         <label asp-for="CurrentProfileItemType.Name" class="form-label">Name</label>
         <input asp-for="CurrentProfileItemType.Name"

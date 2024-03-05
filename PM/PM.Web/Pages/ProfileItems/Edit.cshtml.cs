@@ -9,7 +9,8 @@ namespace PM.Web.Pages.ProfileItems;
 [Authorize]
 public class EditPageModel(
     ILogger<EditPageModel> logger,
-    IProfileItemRepository profileItemRepository)
+    IProfileItemRepository profileItemRepository,
+    IProfileItemTypesRepository profileItemTypesRepository)
     : PageModel
 {
     public async Task OnGetAsync()
@@ -17,6 +18,8 @@ public class EditPageModel(
         logger.LogInformation("Loading profile items edit page at {DateLoaded}", DateTime.Now);
         CurrentProfileItem = await profileItemRepository.DetailsAsync(Id);
         logger.LogInformation("Profile item edit {Name} loaded", CurrentProfileItem.Name);
+        ItemTypes = await profileItemTypesRepository.GetAsync();
+        logger.LogInformation("Item types loaded successfully. {Count} items loaded", ItemTypes.Count);
     }
 
     public async Task<IActionResult> OnPostAsync()
@@ -25,6 +28,10 @@ public class EditPageModel(
         var form = await Request.ReadFormAsync();
         try
         {
+            var formItemTypeId = int.Parse(form["ddlItemTypes"]);
+            logger.LogInformation("Selected item type id is {ItemTypeId}", formItemTypeId);
+            var profileItemType = new ProfileItemType { ProfileItemTypeId = formItemTypeId };
+            CurrentProfileItem.ItemType = profileItemType;
             await profileItemRepository.UpdateAsync(CurrentProfileItem);
             logger.LogInformation("profile item  {Name} has been updated", CurrentProfileItem.Name);
         }
@@ -39,4 +46,5 @@ public class EditPageModel(
 
     [BindProperty(SupportsGet = true)] public int Id { get; set; }
     [BindProperty] public ProfileItem CurrentProfileItem { get; set; }
+    [BindProperty] public List<ProfileItemType> ItemTypes { get; set; }
 }

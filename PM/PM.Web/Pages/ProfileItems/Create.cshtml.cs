@@ -22,10 +22,15 @@ public class CreatePageModel(
 
     public async Task<IActionResult> OnPostAsync()
     {
+        logger.LogInformation("Reading entered form data at {DateLoaded}", DateTime.Now);
         var form = await Request.ReadFormAsync();
 
         try
         {
+            var formItemTypeId = int.Parse(form["ddlItemTypes"]);
+            logger.LogInformation("Selected item type id is {ItemTypeId}", formItemTypeId);
+            var profileItemType = new ProfileItemType { ProfileItemTypeId = formItemTypeId };
+            ProfileItem.ItemType = profileItemType;
             await profileItemRepository.InsertAsync(ProfileItem);
             logger.LogInformation("Profile Item with {Name} has been saved", ProfileItem.Name);
         }

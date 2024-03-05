@@ -24,6 +24,7 @@
 
 <form enctype="multipart/form-data"
       method="post">
+    <input type="hidden" asp-for="CurrentProfileItem.ProfileItemId"/>
     <div class="mb-3">
         <label asp-for="CurrentProfileItem.Name" class="form-label">Name</label>
         <input asp-for="CurrentProfileItem.Name"
@@ -33,12 +34,35 @@
         <span asp-validation-for="CurrentProfileItem.Name"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="CurrentProfileItem.Description" class="form-label">Description</label>
-        <input asp-for="CurrentProfileItem.Description"
+        <label asp-for="CurrentProfileItem.Description" class="form-label">Enter description</label>
+        <textarea class="form-control" asp-for="CurrentProfileItem.Description" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CurrentProfileItem.ItemType" class="form-label">Choose item type</label>
+        <select class="form-select" aria-label="Item type select" name="ddlItemTypes">
+            @foreach (var profileItemType in Model.ItemTypes)
+            {
+                if (profileItemType.ProfileItemTypeId == Model.CurrentProfileItem.ItemType.ProfileItemTypeId)
+                {
+                    <option value="@profileItemType.ProfileItemTypeId" selected="selected">@profileItemType.Name</option>
+                }
+                else
+                {
+                    <option value="@profileItemType.ProfileItemTypeId">@profileItemType.Name</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CurrentProfileItem.Line" class="form-label">Line to be entered in the script</label>
+        <input asp-for="CurrentProfileItem.Line"
                class="form-control"
                required="required"
                type="text">
-        <span asp-validation-for="CurrentProfileItem.Description"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CurrentProfileItem.LineContent" class="form-label">Line to be entered in the script</label>
+        <textarea class="form-control" asp-for="CurrentProfileItem.LineContent" rows="6"></textarea>
     </div>
     <div class="mb-3">
         <button class="btn btn-primary mr-3 mt-2 "
@@ -48,4 +72,3 @@
         <a asp-page="/ProfileItems/Index">Cancel and go back to profile item list</a>
     </div>
 </form>
-
