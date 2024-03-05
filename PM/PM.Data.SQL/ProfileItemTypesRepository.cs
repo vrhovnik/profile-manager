@@ -38,8 +38,8 @@ public class ProfileItemTypesRepository(string connectionString)
         using var connection = await GetConnection();
         var profileItemType = await connection.QuerySingleOrDefaultAsync<ProfileItemType>( 
             "SELECT U.ProfileItemTypeId, U.Name, U.Description, count(P.ProfileItemId) as COUNT " +
-                  "FROM ProfileItemTypes U JOIN ProfileItems P ON U.ProfileItemTypeId = P.ProfileItemTypeId " +
-                  "WHERE U.ProfileTypeId=@entityId " +
+                  "FROM ProfileItemTypes U LEFT JOIN ProfileItems P ON U.ProfileItemTypeId = P.ProfileItemTypeId " +
+                  "WHERE U.ProfileItemTypeId=@entityId " +
                   "GROUP BY U.ProfileItemTypeId, U.Name, U.Description ORDER BY U.Name", new { entityId });
         return profileItemType;
     }
@@ -49,7 +49,7 @@ public class ProfileItemTypesRepository(string connectionString)
         using var connection = await GetConnection();
         var sql =
             "SELECT U.ProfileItemTypeId, U.Name, U.Description, count(P.ProfileItemId) as COUNT FROM ProfileItemTypes U " +
-            "JOIN ProfileItems P ON U.ProfileItemTypeId = P.ProfileItemTypeId ";
+            "LEFT JOIN ProfileItems P ON U.ProfileItemTypeId = P.ProfileItemTypeId ";
             
         if (!string.IsNullOrEmpty(query))
             sql += "WHERE U.Name LIKE '%' + @query + '%' ";
