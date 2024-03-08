@@ -7,4 +7,5 @@ public class Profile
     public string Description { get; set; }
     public ProfileType Type { get; set; }
     public List<ProfileItem> Items { get; set; } = new();
+    public DateTime DateCreated { get; set; }
 }

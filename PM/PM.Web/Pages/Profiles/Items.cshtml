@@ -1,0 +1,34 @@
+﻿@page "{profileId:int}"
+@model PM.Web.Pages.Profiles.ItemsPageModel
+
+@{
+    var profile = Model.CurrentProfile;
+    var profileName = profile.Name;
+    ViewBag.Title = "Add profile items for profile " + profileName;
+}
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-page="/User/Dashboard">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-page="/Profiles/Index">Profiles</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-page="/ProfileItems/Index">Profile Items</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-page="/Profiles/Edit" asp-route-id="@profile.ProfileId">Profile @profileName</a>
+        </li>
+        <li aria-current="page"
+            class="breadcrumb-item active">
+           Profile Item list for profile @profileName
+        </li>
+    </ol>
+}
+
+<h2>Add profile items for profile @profileName</h2>
+
+

@@ -1,0 +1,59 @@
+﻿@page "{pageNumber=1}/{query?}"
+@model IndexPageModel
+
+@{
+    ViewData["Title"] = "Profile overview";
+}
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-page="/User/Dashboard">Dashboard</a>
+        </li>
+        <li aria-current="page"
+            class="breadcrumb-item active">
+           Profile list 
+        </li>
+    </ol>
+}
+
+<div class="container">
+    <div class="float-end mt-2 mb-2">
+        <a asp-page="/Profiles/Create"
+           class="btn btn-success">
+            Create new profile <i class="fas fa-plus"></i>
+        </a>
+    </div>
+</div>
+<div class="container">
+    <input aria-label="search term"
+           class="form-control"
+           hx-get
+           hx-indicator="#indicator"
+           hx-swap="outerHtml"
+           hx-target="#grid"
+           hx-trigger="keyup changed delay:300ms"
+           id="tbQuery"
+           name="query"
+           value="@Model.Query"
+           placeholder="enter search query"
+           type="text">
+    <div class="row mt-2">
+        @await Html.PartialAsync("_ProfilesList", Model.Profiles)
+        <img alt="tail spin"
+             class="htmx-indicator"
+             id="indicator"
+             src="~/svg-loaders/tail-spin.svg">
+    </div>
+</div>
+
+@section Scripts
+{
+    @await Html.PartialAsync("_HtmxScripts")
+    <script src="~/js/sortable.js" type="text/javascript"></script>
+}
+
+@section Head
+{
+    <link rel="stylesheet" href="~/css/sortable.css"/>
+}

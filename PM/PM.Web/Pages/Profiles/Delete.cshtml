@@ -1,0 +1,45 @@
+@page "{id}"
+@model DeletePageModel
+
+@{
+    var name = Model.CurrentProfileItem.Name;
+    ViewData["Title"] = $"Deleting Profile Item {name}";
+}
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-page="/User/Dashboard">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-page="/ProfileItems/Index">Profile item</a>
+        </li>
+        <li aria-current="page"
+            class="breadcrumb-item active">
+            Delete profile item @name
+        </li>
+    </ol>
+}
+
+<h2 class="text-muted">
+    Delete profile item @name
+</h2>
+
+
+<p class="text-info">
+    Delete profile item @name with description @Model.CurrentProfileItem.Description.
+    Associated with <b>@Model.CurrentProfileItem.Profiles.Count</b> profiles.
+    <br>
+    <br>
+    Do you want to proceed?
+</p>
+
+<form method="post">
+    <input type="hidden" asp-for="CurrentProfileItem.ProfileItemId"/>
+    <button class="btn btn-primary mr-2 mt-2"
+            type="submit">
+        I understand I will delete @name and every data associated with that profile item
+    </button>
+    <a asp-page="/ProfileItems/Index">Cancel and go back to the list</a>
+</form>

@@ -1,0 +1,63 @@
+@page "{id}"
+@model EditPageModel
+
+@{
+    var name = Model.CurrentProfile.Name;
+    ViewData["Title"] = $"Edit profile {name}";
+}
+
+@section breadcrumb
+{
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-page="/User/AdminDashboard">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-page="/Profiles/Index">Profiles</a>
+        </li>
+        <li aria-current="page"
+            class="breadcrumb-item active">
+            Profile @Model.CurrentProfile.Name
+        </li>
+    </ol>
+}
+
+<form enctype="multipart/form-data"
+      method="post">
+    <input type="hidden" asp-for="CurrentProfile.ProfileId"/>
+    <div class="mb-3">
+        <label asp-for="CurrentProfile.Name" class="form-label">Name</label>
+        <input asp-for="CurrentProfile.Name"
+               class="form-control"
+               required="required"
+               type="text">
+        <span asp-validation-for="CurrentProfile.Name"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CurrentProfile.Description" class="form-label">Enter description</label>
+        <textarea class="form-control" asp-for="CurrentProfile.Description" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CurrentProfile.Type" class="form-label">Choose profile type</label>
+        <select class="form-select" aria-label="Item type select" name="ddlItemTypes">
+            @foreach (var profileItemType in Model.ProfileTypes)
+            {
+                if (profileItemType.ProfileTypeId == Model.CurrentProfile.Type.ProfileTypeId)
+                {
+                    <option value="@profileItemType.ProfileTypeId" selected="selected">@profileItemType.Name</option>
+                }
+                else
+                {
+                    <option value="@profileItemType.ProfileTypeId">@profileItemType.Name</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary mr-3 mt-2 "
+                type="submit">
+            Save and define items <i class="fas fa-save"></i>
+        </button>
+        <a asp-page="/Profiles/Index">Cancel and go back to profiles list</a>
+    </div>
+</form>
