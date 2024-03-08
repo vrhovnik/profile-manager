@@ -48,6 +48,8 @@ builder.Services.AddScoped<IProfileItemTypesRepository, ProfileItemTypesReposito
     new ProfileItemTypesRepository(dataOptions.ConnectionString));
 builder.Services.AddScoped<IProfileItemRepository, ProfileItemRepository>(_ =>
     new ProfileItemRepository(dataOptions.ConnectionString));
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>(_ =>
+    new ProfileRepository(dataOptions.ConnectionString));
 
 var app = builder.Build();
 

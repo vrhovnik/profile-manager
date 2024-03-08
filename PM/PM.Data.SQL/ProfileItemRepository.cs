@@ -85,8 +85,6 @@ public class ProfileItemRepository(string connectionString)
             if (!lookup.TryGetValue(profileItem.ProfileItemId, out _))
                 lookup.Add(profileItem.ProfileItemId, profileItem);
 
-            profileItem.Profiles ??= new List<Profile>();
-
             if (profile == null) return profileItem;
             lookup[profileItem.ProfileItemId].Profiles.Add(profile);
 
