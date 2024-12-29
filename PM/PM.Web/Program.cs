@@ -58,15 +58,11 @@ if (!app.Environment.IsDevelopment()) app.UseExceptionHandler("/Info/Error");
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
-app.UseEndpoints(endpoints =>
+app.MapRazorPages();
+app.MapControllers();
+app.MapHealthChecks("/" + RouteHelper.HealthRoute, new HealthCheckOptions
 {
-    endpoints.MapHealthChecks("/" + RouteHelper.HealthRoute, new HealthCheckOptions
-    {
-        Predicate = _ => true,
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-    }).AllowAnonymous();
-    endpoints.MapRazorPages();
-    endpoints.MapControllers();
-});
-
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+}).AllowAnonymous();
 app.Run();

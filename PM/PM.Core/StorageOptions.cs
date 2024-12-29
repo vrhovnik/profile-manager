@@ -5,11 +5,11 @@ namespace PM.Core;
 public class StorageOptions
 {
     [Required(ErrorMessage = "Connection string to storage is required settings")]
-    public string ConnectionString { get; set; }
+    public required string ConnectionString { get; init; }
 
     [Required(ErrorMessage = "Container name is required settings")]
-    public string Container { get; set; }
+    public required string Container { get; init; }
 
     [Required(ErrorMessage = "Settings container name is required settings")]
-    public string SettingsContainer { get; set; }
+    public required string SettingsContainer { get; init; }
 }

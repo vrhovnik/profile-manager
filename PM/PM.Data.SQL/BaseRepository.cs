@@ -1,7 +1,7 @@
 ﻿using System.Data;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using Dapper.Contrib.Extensions;
+using Microsoft.Data.SqlClient;
 using PM.Core;
 using PM.Interfaces;
 

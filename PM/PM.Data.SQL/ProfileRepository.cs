@@ -40,9 +40,8 @@ public class ProfileRepository(string connectionString) : BaseRepository<Profile
                 lookup[profile.ProfileId].Items.Add(currentProfileItem);
                 
                 if (category == null) return profile;
-                    
+                
                 lookup[profile.ProfileId].Categories.Add(category);
-
                 return profile;
             }, splitOn: "ProfileTypeId,ProfileItemId,CategoryId");
         return lookup.Values.ToList();
